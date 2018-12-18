@@ -1,0 +1,814 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+    <link href="https://stackpath.bootstrapcdn.com/bootswatch/4.1.1/sandstone/bootstrap.min.css" rel="stylesheet" integrity="sha384-7MvlWCBuyFQHTibL0ta2jXuoCAaC8s2FIwWC/olSTVZ2OBod2DVHIXQcvUKdfJSA" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/jq-3.3.1/jszip-2.5.0/dt-1.10.18/af-2.3.2/b-1.5.4/b-colvis-1.5.4/b-html5-1.5.4/b-print-1.5.4/cr-1.5.0/fc-3.2.5/fh-3.1.4/kt-2.5.0/r-2.2.2/rg-1.1.0/rr-1.2.4/sc-1.5.0/sl-1.2.6/datatables.min.css"/>
+
+    <link rel="shortcut icon" href="data:image/vnd.microsoft.icon;base64,AAABAAMAMDAAAAEAIACoJQAANgAAACAgAAABACAAqBAAAN4lAAAQEAAAAQAgAGgEAACGNgAAKAAAADAAAABgAAAAAQAgAAAAAAAAJAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABLxZMLS8WTPkvFk1VLxZNUS8WTVEvFk1RLxZNUS8WTVEvFk1RLxZNUS8WTVEvFk1RLxZNUS8WTVEvFk1RLxZNUS8WTVEvFk1RLxZNUS8WTVEvFk1RLxZNUS8WTVEvFk1RLxZNUS8WTVEvFk1RLxZNUS8WTVEvFk1RLxZNUS8WTVEvFk1RLxZNUS8WTVEvFk1RLxZNUS8WTVEvFk1VLxZM/S8WTBwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEvFkwxLxZOVS8WT9EvFk/1LxZP8S8WT/EvFk/xLxZP8S8WT/EvFk/xLxZP8S8WT/EvFk/xLxZP8S8WT/EvFk/xLxZP8S8WT/EvFk/xLxZP8S8WT/EvFk/xLxZP8S8WT/EvFk/xLxZP8S8WT/EvFk/xLxZP8S8WT/EvFk/xLxZP8S8WT/EvFk/xLxZP8S8WT/EvFk/xLxZP8S8WT/EvFk/1LxZPwS8WTSwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEvFk0tLxZP3S8WT/0vFk/9LxZP/S8WT/0vFk/9LxZP/S8WT/0vFk/9LxZP/S8WT/0vFk/9LxZP/S8WT/0vFk/9LxZP/S8WT/0vFk/9LxZP/S8WT/0vFk/9LxZP/S8WT/0vFk/9LxZP/S8WT/0vFk/9LxZP/S8WT/0vFk/9LxZP/S8WT/0vFk/9LxZP/S8WT/0vFk/9LxZP/S8WT/0vFk/9LxZP/S8WTaQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEvFk2hLxZP/S8WT/0vFk/9LxZP/S8WT/0vFk/9LxZP/S8WT/0vFk/9LxZP/S8WT/0vFk/9LxZP/S8WT/0vFk/9LxZP/S8WT/0vFk/9LxZP/S8WT/0vFk/9LxZP/S8WT/0vFk/9LxZP/S8WT/0vFk/9LxZP/S8WT/0vFk/9LxZP/S8WT/0vFk/9LxZP/S8WT/0vFk/9LxZP/S8WT/0vFk/9LxZP/S8WTaQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEvFk2lLxZP/S8WT/0vFk/9LxZP/S8WT/0vFk/9LxZP/S8WT/0vFk/9LxZP/S8WT/0vFk/9LxZP/S8WT/0vFk/9LxZP/S8WT/0vFk/9LxZP/S8WT/0vFk/9LxZP/S8WT/0vFk/9LxZP/S8WT/0vFk/9LxZP/S8WT/0vFk/9LxZP/S8WT/0vFk/9LxZP/S8WT/0vFk/9LxZP/S8WT/0vFk/9LxZP/S8WTYwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEvFk2lLxZP/S8WT/0vFk/9LxZP/S8WT60vFk8FLxZPAS8WTwEvFk8BLxZPAS8WTwEvFk8BLxZPAS8WTwEvFk8BLxZPAS8WTwEvFk8BLxZPAS8WTwEvFk8BLxZPAS8WTwEvFk8BLxZPAS8WTwEvFk8BLxZPAS8WTwEvFk8BLxZPAS8WTwEvFk8BLxZPAS8WTwEvFk8BLxZPAS8WTwEvFk8FLxZOmS8WTJAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEvFk2lLxZP/S8WT/0vFk/9LxZP/S8WTr0vFkwxLxZMKS8WTCkvFkwpLxZMKS8WTCkvFkwpLxZMKS8WTCkvFkwpLxZMKS8WTCkvFkwpLxZMKS8WTCkvFkwpLxZMKS8WTCkvFkwpLxZMKS8WTCkvFkwpLxZMKS8WTCkvFkwpLxZMKS8WTCkvFkwpLxZMKS8WTCkvFkwpLxZMKS8WTCkvFkwpLxZMFAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEvFk2lLxZP/S8WT/0vFk/9LxZP/S8WTrEvFkwMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEvFk2lLxZP/S8WT/0vFk/9LxZP/S8WTrEvFkwMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEvFk2lLxZP/S8WT/0vFk/9LxZP/S8WTrEvFkwMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEvFk2lLxZP/S8WT/0vFk/9LxZP/S8WTrEvFkwMAAAAAAAAAAAAA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AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEvFk05LxZPjS8WT/0vFk/9LxZP/S8WT/0vFk/9LxZP/S8WT/0vFk/9LxZP/S8WTyUvFkw4AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEvFk2lLxZP/S8WT/0vFk/9LxZP/S8WTrEvFkwMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAS8WTQ0vFk+NLxZP/S8WT/0vFk/9LxZP/S8WT/0vFk/9LxZP/S8WT/0vFk/9LxZP/S8WTyUvFkw4AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEvFk2lLxZP/S8WT/0vFk/9LxZP/S8WTrEvFkwMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABLxZMCS8WTpEvFk/9LxZP/S8WT/0vFk/9LxZP/S8WT/0vFk/9LxZP/S8WT/0vFk/9LxZP/S8WTyUvFkw4AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEvFk2lLxZP/S8WT/0vFk/9LxZP/S8WTrEvFkwMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAS8WTj0vFk/9LxZP/S8WT/0vFk/9LxZP/S8WT/0vFk/9LxZP/S8WT/0vFk/9LxZP/S8WTwkvFkwsAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEvFk2lLxZP/S8WT/0vFk/9LxZP/S8WTrEvFkwMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAS8WTH0vFk5BLxZO2S8WTtkvFk7ZLxZO2S8WTtkvFk7ZLxZO2S8WTtkvFk7ZLxZOzS8WTWAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEvFk2lLxZP/S8WT/0vFk/9LxZP/S8WTq0vFkwMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEvFkwJLxZMFS8WTBkvFkwZLxZMGS8WTBkvFkwZLxZMGS8WTBkvFkwZLxZMFS8WTAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEvFk0tLxZPwS8WT/UvFk/1LxZP9S8WTiAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEvFkwdLxZNAS8WTVUvFk1VLxZNMS8WTFAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP///////wAA////////AAD///////8AAP///////wAA////////AAD///////8AAP///////wAA////////AAD///////8AAPAAAAAADwAA8AAAAAAPAADwAAAAAA8AAPAAAAAADwAA8AAAAAAPAADwf/////8AAPB//////wAA8H//////AADwf/////8AAPB//////wAA8H//j///AADwf/8H//8AAPB//gP//wAA8Hj8Af//AADwcHgA//8AAPBgMAB+fwAA8HAAIDw/AADweABwGD8AAPB8APgAPwAA8H4B/AA/AADwfwP+AD8AAPB/h/8APwAA8H/P/wA/AADwf//+AD8AAPB///wAPwAA8H//+AA/AADwf//4AD8AAPB///wAfwAA8H//////AADwf/////8AAP///////wAA////////AAD///////8AAP///////wAA////////AAD///////8AAP///////wAA////////AAD///////8AACgAAAAgAAAAQAAAAAEAIAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABLxZMCS8WTKEvFk0BLxZNAS8WTQEvFk0BLxZNAS8WTQEvFk0BLxZNAS8WTQEvFk0BLxZNAS8WTQEvFk0BLxZNAS8WTQEvFk0BLxZNAS8WTQEvFk0BLxZNAS8WTQEvFk0BLxZNAS8WTQEvFkz5LxZMUAAAAAAAAAAAAAAAAAAAAAEvFk0hLxZPgS8WT90vFk/ZLxZP2S8WT9kvFk/ZLxZP2S8WT9kvFk/ZLxZP2S8WT9kvFk/ZLxZP2S8WT9kvFk/ZLxZP2S8WT9kvFk/ZLxZP2S8WT9kvFk/ZLxZP2S8WT9kvFk/ZLxZP2S8WT+EvFk4AAAAAAAAAAAAAAAAAAAAAAS8WTkUvFk/9LxZP/S8WT/0vFk/9LxZP/S8WT/0vFk/9LxZP/S8WT/0vFk/9LxZP/S8WT/0vFk/9LxZP/S8WT/0vFk/9LxZP/S8WT/0vFk/9LxZP/S8WT/0vFk/9LxZP/S8WT/0vFk/9LxZP/S8WTlgAAAAAAAAAAAAAAAAAAAABLxZOWS8WT/0vFk/9LxZP9S8WT9kvFk/ZLxZP2S8WT9kvFk/ZLxZP2S8WT9kvFk/ZLxZP2S8WT9kvFk/ZLxZP2S8WT9kvFk/ZLxZP2S8WT9kvFk/ZLxZP2S8WT9kvFk/ZLxZP2S8WT9kvFk/hLxZOAAAAAAAAAAAAAAAAAAAAAAEvFk5ZLxZP/S8WT/0vFk89LxZNHS8WTQEvFk0BLxZNAS8WTQEvFk0BLxZNAS8WTQEvFk0BLxZNAS8WTQEvFk0BLxZNAS8WTQEvFk0BLxZNAS8WTQEvFk0BLxZNAS8WTQEvFk0BLxZNAS8WTPkvFkxUAAAAAAAAAAAAAAAAAAAAAS8WTlkvFk/9LxZP/S8WTv0vFkwkAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABLxZOWS8WT/0vFk/9LxZO/S8WTCQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEvFk5ZLxZP/S8WT/0vFk79LxZMJAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAS8WTH0vFk15LxZM9S8WTAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAS8WTlkvFk/9LxZP/S8WTv0vFkwkAAAAAAAAAAEvFkwEAAAAAAAAAAAAAAAAAAAAAAAAAAEvFkypLxZPES8WT/0vFk+xLxZNkS8WTAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABLxZOWS8WT/0vFk/9LxZO/S8WTCQAAAABLxZMxS8WTlUvFkzwAAAAAAAAAAAAAAABLxZMoS8WTxEvFk/9LxZP/S8WT/0vFk+9LxZNlS8WTAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEvFk5ZLxZP/S8WT/0vFk79LxZMHS8WTLEvFk85LxZP/S8WT2UvF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" />
+    <title>Hadoop - Ranger Audit</title>
+
+      <style>
+        .card-header .fa {
+          transition: .3s transform ease-in-out;
+        }
+        .card-header .collapsed .fa {
+          transform: rotate(90deg);
+        }
+        .details{
+            color:#93C54B
+        }
+      </style>
+
+  </head>
+  <body>
+<!-- navigation -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <div class="container-fluid">
+    <a class="navbar-brand" href="#" id="nav_title">Hadoop - Ranger Audit Report</a>
+
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+        <div class="collapse navbar-collapse" id="navbarColor01">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="#">Top <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item" hidden>
+            <a class="nav-link" href="#resource">Resource</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#user">User</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#group">Group</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+</nav>
+<!-- end navigation -->
+
+<div class='container-fluid'>
+
+    <div class="row mt-3">
+            <div class="col-md-6 text-left" id="report_prop_cluster"></div>
+            <div class="col-md-6 text-right" id="report_prop_date"></div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-4 col-sm-12">
+                <!-- HADOOP RESOURCES -->
+
+                    <div class="col-12 card border mt-3" id="resource_card" hidden>
+                            <div class="card-header">
+                                <a class="collapsed d-block" data-toggle="collapse" href="#collapse-resource" aria-expanded="true" aria-controls="collapse-resource" id="heading-resource">
+                                <h4 class='float-left'><i class="fas fa-list-alt"></i> Audit by Resource</h4><h4 class='float-right'><i class="fa fa-chevron-down pull-right"></i></h4>
+                                </a>
+                            </div>
+                            <div id="collapse-resource" class="collapse" aria-labelledby="heading-resource">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="table-responsive small">
+                                            <table class="table table-hover" id='table_resource'>
+                                                <thead>
+                                                    <tr>
+                                                        <th scope="col">Hadoop Service</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+
+                <!-- END HADOOP RESOURCES -->
+
+                <!-- HADOOP USERS -->
+
+                <div class="col-12 card border mt-3" id="user_card">
+                        <div class="card-header">
+                            <a class="collapsed d-block" data-toggle="collapse" href="#collapse-user" aria-expanded="true" aria-controls="collapse-collapsed" id="heading-user">
+                            <h4 class='float-left'><i class="fas fa-user"></i> Audit by User</h4><h4 class='float-right'><i class="fa fa-chevron-down pull-right"></i></h4>
+                            </a>
+                        </div>
+                        <div id="collapse-user" class="collapse" aria-labelledby="heading-user">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="table-responsive small">
+                                        <table class="table table-hover" id='table_user'>
+                                            <thead>
+                                                <tr>
+                                                    <th scope="col">Username</th>
+                                                    <th scope="col">Full Name</th>
+                                                    <th scope="col">Email</th>
+                                                    <th scope="col">Title</th>
+                                                    <th scope="col">AD User</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+
+                <!-- END HADOOP USERS -->
+
+                <!-- HADOOP GROUPS -->
+
+                <div class="col-12 card border mt-3" id="group_card">
+                        <div class="card-header">
+                            <a class="collapsed d-block" data-toggle="collapse" href="#collapse-group" aria-expanded="true" aria-controls="collapse-collapsed" id="heading-group">
+                            <h4 class='float-left'><i class="fas fa-users"></i> Audit by Group</h4><h4 class='float-right'><i class="fa fa-chevron-down pull-right"></i></h4>
+                            </a>
+                        </div>
+                        <div id="collapse-group" class="collapse" aria-labelledby="heading-group">
+                            <div class="card-body">
+                            <div class="row">
+                                <div class="table-responsive small">
+                                    <table class="table table-hover" id='table_group'>
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">Group Name</th>
+                                                <th scope="col">Is Active Directory Group</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+                </div>
+
+                <!-- END HADOOP GROUPS -->
+        </div>
+
+        <div class="col-md-8 col-sm-12 d-flex align-items-stretch">
+            <div class="col-12 card border mt-3" id="detail">
+                    <div class="card-header">
+                        <h4 class='float-left details'  id="detail_title"><i class="fas fa-book"></i> Detail</h4>
+                        <div class='float-right' id="report_properties"></div>
+                    </div>
+                    <div class="card-body">
+                        <div class="content" id="report_detail">
+
+                            <!-- USER HEADER -->
+                            <div id="user_detail">
+                                <div  class="row">
+                                    <div class="row col-12">
+                                        <div class="col-md-3 col-sm-6">User Type:</div>
+                                        <div class="col-md-9 col-sm-6" id="type_detail"></div>
+                                    </div>
+                                    <div class="row col-12">
+                                        <div class="col-md-3 col-sm-6">Name: </div><div class="col-md-3 col-sm-6" id="name_detail"></div>
+                                        <div class="col-md-3 col-sm-6">Email: </div><div class="col-md-3 col-sm-6" id="email_detail"></div>
+                                    </div>
+                                    <div class="row col-12">
+                                        <div class="col-md-3 col-sm-6">User Name: </div><div class="col-md-3 col-sm-6 " id="username_detail"></div>
+                                        <div class="col-md-3 col-sm-6">Title: </div><div class="col-md-3 col-sm-6 " id="title_detail"></div>
+                                    </div>
+                                    <div class="row col-12">
+                                        <div class="col-md-3 col-sm-6">Manager: </div><div class="col-md-3 col-sm-6 " id="manager_detail"></div>
+                                        <div class="col-md-3 col-sm-6">Email: </div><div class="col-md-3 col-sm-6 " id="memail_detail"></div>
+                                    </div>
+                                    <div class="row col-12">
+                                        <hr class="col-xs-12 col">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="details"><h5><i class="fas fa-users"></i> Group Membership</h5></div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-12">
+                                        <ul id="group_list">
+
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <hr class="col-xs-12 col">
+                                </div>
+                            </div>
+                            <!-- END USER HEADER -->
+
+                            <!-- GROUP HEADER -->
+                            <div id="group_detail">
+                                <div class="row">
+                                    <div class="col-2">Group Type: </div><div class="col" id="group_type_detail"></div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-2">Name: </div><div class="col" id="group_name_detail"></div>
+                                </div>
+                                <div class="row">
+                                    <hr class="col-xs-12 col">
+                                </div>
+
+                                <div class="row">
+                                    <div class="details"><h5><i class="fas fa-users"></i> Group Members</h5></div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-12">
+                                        <ul id="user_list">
+
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <hr class="col-xs-12 col">
+                                </div>
+                            </div>
+                            <!-- END GROUP HEADER -->
+
+                            <div class="row">
+                                    <div class="details"><h5><i class="fas fa-briefcase"></i> Resources</h5></div>
+                                    <div class="container-fluid" id="resource_container">
+                                        <div class="col-12">
+                                            HDFS
+                                            <div class="table-responsive">
+                                                <table class="table table-striped table-bordered table-hover small" id="table_hdfs">
+                                                    <thead>
+                                                        <tr>
+                                                            <th scope="col">Policy</th>
+                                                            <th scope="col">Path</th>
+                                                            <th scope="col">Access</th>
+                                                            <th scope="col">Recursive</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody id="table_hdfs_body">
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                        <hr class="col-xs-12 col">
+                                        <div class="col-12">
+                                            Hive
+                                            <div class="table-responsive">
+                                                <table class="table table-striped table-bordered table-hover small" id="table_hive">
+                                                    <thead>
+                                                        <tr>
+                                                            <th scope="col">Policy</th>
+                                                            <th scope="col">Database</th>
+                                                            <th scope="col">Table</th>
+                                                            <th scope="col">Column</th>
+                                                            <th scope="col">Access</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody id="table_hive_body">
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                        <hr class="col-xs-12 col">
+                                        <div class="col-12">
+                                            Knox
+                                            <div class="table-responsive">
+                                                <table class="table table-striped table-bordered table-hover small" id="table_knox">
+                                                    <thead>
+                                                        <tr>
+                                                            <th scope="col">Policy</th>
+                                                            <th scope="col">Service</th>
+                                                            <th scope="col">Topology</th>
+                                                            <th scope="col">Access</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody id="table_knox_body">
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                        <hr class="col-xs-12 col">
+                                        <div class="col-12">
+                                            Yarn
+                                            <div class="table-responsive">
+                                                <table class="table table-striped table-bordered table-hover small" id="table_yarn">
+                                                    <thead>
+                                                        <tr>
+                                                            <th scope="col">Policy</th>
+                                                            <th scope="col">Queue</th>
+                                                            <th scope="col">Access</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody id="table_yarn_body">
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                        </div>
+                    </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/jq-3.3.1/jszip-2.5.0/dt-1.10.18/af-2.3.2/b-1.5.4/b-colvis-1.5.4/b-html5-1.5.4/b-print-1.5.4/cr-1.5.0/fc-3.2.5/fh-3.1.4/kt-2.5.0/r-2.2.2/rg-1.1.0/rr-1.2.4/sc-1.5.0/sl-1.2.6/datatables.min.js"></script>
+
+
+  </body>
+</html>
+
+<script type="application/json" id="data_named_user">data_named_user_replace</script>
+<script type='application/json' id="data_group_map">data_group_map_replace</script>
+<script type="application/json" id="data_polices">data_policies_replace</script>
+<script type="application/json" id="data_report_properties">data_report_properties_replace</script>
+
+
+<script type="text/javascript">
+report={
+    vars:{
+        groups: '',
+        users: '',
+        named_user: '',
+        polices: '',
+        services: [],
+        report_properties: '',
+        div_user_detail: '',
+        div_group_detail: '',
+        div_resource_container: '',
+    },
+
+    init: function(){
+        report.load_data_vars();
+        report.set_report_properties();
+        report.save_div();
+        report.init_user_table();
+        report.init_resource_table();
+        report.init_group_table();
+        $('#group_detail').hide();
+    },
+
+    load_data_vars: function(){
+        report.vars.groups = JSON.parse($('#data_group_map').html());
+        report.vars.polices = JSON.parse($('#data_polices').html());
+        report.vars.named_user = JSON.parse($('#data_named_user').html());
+        report.vars.report_properties = JSON.parse($('#data_report_properties').html());
+        report.vars.services = report.unique_serivces();
+        report.vars.users = report.user_to_group_mapping();
+    },
+
+    save_div: function(){
+      report.vars.div_user_detail = $('#user_detail').html();
+      report.vars.div_group_detail = $('#group_detail').html();
+      report.vars.div_resource_container = $('#resource_container').html();
+    },
+
+    set_report_properties: function(){
+        $('#report_prop_cluster').text('Cluster: ' + report.vars.report_properties[0].cluster);
+        $('#report_prop_date').text('Report Date: ' + report.vars.report_properties[0].date);
+    },
+
+    init_resource_table: function(){
+        services = [];
+        $.each(report.vars.services, function(key,value){
+            services.push([value]);
+        })
+
+        var table = $('#table_resource').DataTable({
+            "data": services,
+            "autoWidth": false
+        })
+    },
+
+    init_user_table:function(){
+        udata = []
+        $.each(report.vars.users, function(key,value){
+
+            if(value.isADUser) {
+                datatemp = [
+                    value.user_attributes.sAMAccountName,
+                    value.user_attributes.first_name + ' ' + value.user_attributes.last_name,
+                    value.user_attributes.mail,
+                    value.user_attributes.title,
+                    value.isADUser
+                ];
+            }
+            else{
+                datatemp = [
+                    value.user_name,
+                    null,
+                    null,
+                    null,
+                    value.isADUser
+                ];
+            }
+
+           udata.push(datatemp);
+        });
+
+        var table = $('#table_user').DataTable({
+                "data": udata,
+                "autoWidth": false
+            }
+        );
+
+        $('#table_user tbody').on('click','tr', function(){
+            //Reset the div
+            $('#user_detail').html(report.vars.div_user_detail);
+            $('#resource_container').html(report.vars.div_resource_container);
+
+            // Load the new data into user detail div
+            var data = table.row(this).data();
+            report.load_user_detail(data[0]);
+
+            $('#group_detail').hide();
+            $('#user_detail').show();
+        })
+    },
+
+    init_group_table:function(){
+        g = []
+        $.each(report.vars.groups, function(key,value){
+            g.push([value.group, value.isADGroup]);
+        })
+
+        var table = $('#table_group').DataTable({
+            "data":g,
+            "autoWidth": false
+        })
+
+        $('#table_group tbody').on('click','tr', function(){
+            //Reset the div
+            $('#group_detail').html(report.vars.div_group_detail);
+            $('#resource_container').html(report.vars.div_resource_container);
+
+            // Load the new data into user detail div
+            var data = table.row(this).data();
+            report.load_group_detail(data[0]);
+
+            $('#user_detail').hide();
+            $('#group_detail').show();
+        })
+    },
+
+    unique_serivces: function(){
+        //Unique Services
+        var _services = []
+        $.each(report.vars.polices, function(key,policy){
+            $.each(policy, function(key,value){
+                _services.push(value.service);
+            });
+        });
+        _services = Array.from(new Set(_services.sort()));
+        return _services;
+    },
+
+    user_to_group_mapping: function(){
+
+        //Map single AD user to all their groups
+        var _user_to_group = []
+        var unique_user = []
+        $.each(report.vars.groups, function(key,group){
+            $.each(group.member_detail, function(key,member){
+                _user = member.sAMAccountName;
+                unique_user.push(_user);
+            });
+        });
+        unique_user = Array.from(new Set(unique_user.sort()));
+
+        $.each(unique_user, function(key,value){
+            _group_member = [];
+            _user_detail = null;
+            $.each(report.vars.groups, function(id, group){
+                _group_name = group.group;
+                $.each(group.member_detail, function(k, member){
+                    if(member.sAMAccountName === value){
+                        _user_detail = member;
+                        _group_member.push({'group_name': _group_name})
+                    }
+                });
+            });
+            _user_to_group.push({'user_name': value, 'isADUser': true,'user_attributes': _user_detail, 'groups': _group_member});
+        });
+
+        // Append local Ranger users
+        $.each(report.vars.named_user, function(key, value){
+            if(value.isADUser == false) {
+                _user_to_group.push({'user_name': value.user, 'isADUser': false,'user_attributes': null, 'groups': null});
+            }
+        })
+
+        return _user_to_group;
+    },
+
+    load_group_detail: function(group){
+        group_detail = report.find_group_object(group);
+        console.log(group_detail.member_detail);
+        $('#detail_title').html('<i class="fas fa-book"></i> Group Detail');
+        $('#group_name_detail').text(group_detail.group);
+        if(group_detail.isADGroup){
+            $('#group_type_detail').text('Active Directory');
+        }
+        else {
+            $('#group_type_detail').text('Local Group');
+        }
+
+        // Build User List
+        for (i = 0; i < group_detail.member_detail.length; i++){
+            console.log(group_detail.member_detail[i]);
+            $('#user_list').append('<li>' + group_detail.member_detail[i].first_name + ' ' + group_detail.member_detail[i].last_name + '</li>');
+        }
+
+        //Build resources
+        resources = report.find_resources(null,group);
+        report.write_resource_details(resources);
+    },
+
+    load_user_detail: function(username){
+        user_detail = report.find_user_object(username);
+
+        $('#detail_title').html('<i class="fas fa-book"></i> User Detail');
+        if(user_detail.isADUser){
+            $('#type_detail').text('Active Directory');
+            $('#name_detail').text(user_detail.user_attributes.first_name + ' ' + user_detail.user_attributes.last_name);
+            $('#username_detail').text(user_detail.user_attributes.sAMAccountName);
+            $('#title_detail').text(user_detail.user_attributes.title);
+            $('#email_detail').text(user_detail.user_attributes.mail);
+            $('#manager_detail').text(user_detail.user_attributes.manager[0].manager_first_name + ' ' + user_detail.user_attributes.manager[0].manager_last_name);
+            $('#memail_detail').text(user_detail.user_attributes.manager[0].manager_mail);
+
+            //Build Group List
+            for (i = 0; i < user_detail.groups.length; i++) {
+                $('#group_list').append('<li>' + user_detail.groups[i].group_name + '</li>');
+            }
+        }
+        else{
+            $('#type_detail').text('Local Account');
+            $('#name_detail').text(username);
+            $('#group_list').append('<li>None</li>');
+        }
+
+        //Build resources
+        resources = report.find_resources(username,null);
+        report.write_resource_details(resources);
+    },
+
+    write_resource_details: function(resources){
+        hdfs = [];
+        hive = [];
+        knox = [];
+        yarn = [];
+
+        // Build Array for each resource
+        $.each(resources, function(key, value){
+            if(value.resources.path != undefined){
+                hdfs.push(value);
+            }
+            else if(value.resources.database != undefined){
+                hive.push(value);
+            }
+            else if(value.resources.topology != undefined){
+                knox.push(value);
+            }
+            else if(value.resources.queue != undefined){
+                yarn.push(value);
+            }
+        });
+
+        // Write HDFS resources
+        var row='';
+        $.each(hdfs, function(key, policy){
+            if(policy.isEnabled) {
+                var _policy_name = policy.name;
+                var _path = '';
+                var _access = '';
+                var _recursive = policy.resources.path.isRecursive;
+                $.each(policy.policyItem.accesses, function (key, acl) {
+                    if (acl.isAllowed) {
+                        _access = _access + acl.type + ', ';
+                    }
+                });
+                _access = _access.replace(/,\s*$/, ""); // Removes last comma
+
+                $.each(policy.resources.path.values, function (key, value) {
+                    _path = _path + value + '<br>';
+                });
+
+                row = row + '<tr><td>' + _policy_name + '</td><td>' + _path + '</td><td>' + _access + '</td><td>' + _recursive + '</td></tr>';
+            }
+        });
+        $('#table_hdfs_body').html(row);
+
+        // Write Hive resources
+        var row='';
+        $.each(hive, function(key, policy){
+            if(policy.isEnabled) {
+                var _policy_name = policy.name;
+                var _database = '';
+                var _table = '';
+                var _column = '';
+                var _access = '';
+
+                $.each(policy.policyItem.accesses, function (key, acl) {
+                    if (acl.isAllowed) {
+                        _access = _access + acl.type + ', ';
+                    }
+                });
+                _access = _access.replace(/,\s*$/, ""); // Removes last comma
+
+                $.each(policy.resources.database.values, function (key, value) {
+                    _database = _database + value + '<br>';
+                });
+
+                $.each(policy.resources.table.values, function (key, value) {
+                    _table = _table + value + '<br>';
+                });
+
+                $.each(policy.resources.column.values, function (key, value) {
+                    _column = _column + value + '<br>';
+                });
+
+                row = row + '<tr><td>' + _policy_name +
+                            '</td><td>' + _database +
+                            '</td><td>' + _table +
+                            '</td><td>' + _column +
+                            '</td><td>' + _access +
+                            '</td></tr>';
+            }
+        });
+        $('#table_hive_body').html(row);
+
+        // Write Knox resources
+        var row='';
+        $.each(knox, function(key, policy){
+            if(policy.isEnabled) {
+                var _policy_name = policy.name;
+                var _service = '';
+                var _topology = '';
+                var _access = '';
+
+                $.each(policy.policyItem.accesses, function (key, acl) {
+                    if (acl.isAllowed) {
+                        _access = _access + acl.type + ', ';
+                    }
+                });
+                _access = _access.replace(/,\s*$/, ""); // Removes last comma
+
+                $.each(policy.resources.service.values, function (key, value) {
+                    _service = _service + value + '<br>';
+                });
+
+                $.each(policy.resources.topology.values, function (key, value) {
+                    _topology = _topology + value + '<br>';
+                });
+
+
+                row = row + '<tr><td>' + _policy_name +
+                            '</td><td>' + _service +
+                            '</td><td>' + _topology +
+                            '</td><td>' + _access +
+                            '</td></tr>';
+            }
+        });
+        $('#table_knox_body').html(row);
+
+        // Write Yarn resources
+        var row='';
+        $.each(yarn, function(key, policy){
+            if(policy.isEnabled) {
+                var _policy_name = policy.name;
+                var _queue = '';
+                var _access = '';
+
+                $.each(policy.policyItem.accesses, function (key, acl) {
+                    if (acl.isAllowed) {
+                        _access = _access + acl.type + ', ';
+                    }
+                });
+                _access = _access.replace(/,\s*$/, ""); // Removes last comma
+
+                $.each(policy.resources.queue.values, function (key, value) {
+                    _queue = _queue + value + '<br>';
+                });
+
+                row = row + '<tr><td>' + _policy_name +
+                            '</td><td>' + _queue +
+                            '</td><td>' + _access +
+                            '</td></tr>';
+            }
+        });
+        $('#table_yarn_body').html(row);
+    },
+
+    find_user_object: function(username){
+        var _user = '';
+        for(i = 0; i < report.vars.users.length; i++){
+            if(report.vars.users[i].user_name == username){
+                _user = report.vars.users[i];
+                return _user;
+            }
+        }
+    },
+
+    find_group_object: function(group){
+        var _group;
+        for(i = 0; i < report.vars.groups.length; i++){
+            if(report.vars.groups[i].group == group){
+                _group = report.vars.groups[i];
+                return _group;
+            }
+        }
+    },
+
+    get_users_groups: function(username){
+        var _user = report.find_user_object(username);
+        var _groups = _user.groups;
+        return _groups;
+    },
+
+    find_resources: function(username, group_name){
+        var groups = [];
+
+        if(username != null){
+            g = report.get_users_groups(username);
+            $.each(g, function(key,value){
+               groups.push(value.group_name);
+            });
+        }
+
+        if(group_name != null){
+            groups.push(group_name)
+        }
+
+        var items = [];
+        for(i = 0; i < report.vars.polices.length; i++){
+            _service = report.vars.polices[i];
+            for(x = 0; x < _service.length; x++){
+                policy = _service[x];
+                var _match = false;
+                for(y = 0; y < policy.policyItems.length; y++){
+                    if(_match == true){
+                        break;
+                    }
+                    else {
+                        $.each(policy.policyItems[y].groups, function (key, value) {
+                            $.each(groups, function(key,group_name){
+                                if (value == group_name) {
+                                    var data = {
+                                        'name': policy.name,
+                                        'service': policy.service,
+                                        'isEnabled': policy.isEnabled,
+                                        'policyItem': policy.policyItems[y],
+                                        'resources': policy.resources
+                                    }
+                                    items.push(data);
+                                    _match = true;
+                                }
+                            })
+                        });
+
+                        $.each(policy.policyItems[y].users, function (key, value) {
+                            if (value == username) {
+                                var data = {
+                                    'name': policy.name,
+                                    'service': policy.service,
+                                    'isEnabled': policy.isEnabled,
+                                    'policyItem': policy.policyItems[y],
+                                    'resources': policy.resources
+                                }
+                                items.push(data);
+                                _match = true;
+                            }
+                        });
+                    }
+                }
+            }
+        }
+        return items;
+    },
+
+};
+
+$(document).ready(function(){
+	report.init();
+});
+
+</script>
