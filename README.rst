@@ -40,18 +40,18 @@ Usage:
 ------
 hadoop_ranger_audit.py
 
-Switch                  | Description                       | Required
-======================================================================
---ranger_url            | Ranger API URL                    | Yes
---ranger_user           | Ranger API Username               | Yes
---ranger_password       | Ranger API Password               | Yes
---ad_controller         | Active Directory Server Hostname  | Yes
---ad_user               | Read Only AD user - basic account | Yes
---ad_password           | AD user password                  | Yes
---ad_search_base        | DN root to start search from      | Yes
---output_file           | Output HTML file                  | Yes
---cluster_name          | Name of cluster for the report    | Yes
--h / --help             | Print command help                | No
+ Switch                  | Description                       | Required
+ ======================================================================
+ --ranger_url            | Ranger API URL                    | Yes
+ --ranger_user           | Ranger API Username               | Yes
+ --ranger_password       | Ranger API Password               | Yes
+ --ad_controller         | Active Directory Server Hostname  | Yes
+ --ad_user               | Read Only AD user - basic account | Yes
+ --ad_password           | AD user password                  | Yes
+ --ad_search_base        | DN root to start search from      | Yes
+ --output_file           | Output HTML file                  | Yes
+ --cluster_name          | Name of cluster for the report    | Yes
+ -h / --help             | Print command help                | No
 
 
 Requirements
