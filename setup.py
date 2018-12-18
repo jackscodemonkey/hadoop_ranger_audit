@@ -1,14 +1,21 @@
 from setuptools import setup
+from distutils.core import setup
+
+with open('README.rst') as file:
+    long_description= file.read()
 
 setup(
     name='hadoop_ranger_audit',
-    version='0.1',
+    version='0.2',
     packages=['hadoop_ranger_audit'],
     url='https://github.com/jackscodemonkey/hadoop_ranger_audit',
     license='MIT',
     author='Marcus Robb',
     author_email='marcus.robb@initworx.com',
-    description='Parses Ranger Policies and matches to Active Directory users',
+    description="""Generates a stand alone web based report for Hadoop Apache Ranger policies.
+                Performs reverse lookups against Active Directory to match users with Ranger resources that have been
+                provision with AD Groups.""",
+    long_description=long_description,
     install_requires=[
         'alabaster',
         'Babel',
