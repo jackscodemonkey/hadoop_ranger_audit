@@ -5,6 +5,11 @@ Generates a stand alone web based report for Hadoop Apache Ranger policies.
 Performs reverse lookups against Active Directory to match users with Ranger resources that have been
 provision with AD Groups.
 
+Currently provides a report the following policies:
+HDFS
+HIVE
+KNOX
+YARN
 
 Installation from GIT source:
 -----------------------------
@@ -34,29 +39,20 @@ Change to the directory where you downloaded this package and run::
 Usage:
 ------
 hadoop_ranger_audit.py
-+----------------------------------+----------------------------------+----------------------------------+
-|  Switch                          | Description                      | Required                         |
-+==================================+==================================+==================================+
-| --ranger_url                     | Ranger API URL                   | Yes                              |
-+----------------------------------+----------------------------------+----------------------------------+
-| --ranger_user                    | Ranger API Username              | Yes                              |
-+----------------------------------+----------------------------------+----------------------------------+
-| --ranger_password                | Ranger API Password              | Yes                              |
-+----------------------------------+----------------------------------+----------------------------------+
-| --ad_controller                  | Active Directory Server Hostname | Yes                              |
-+----------------------------------+----------------------------------+----------------------------------+
-| --ad_user                        | Read Only AD user - basic account| Yes                              |
-+----------------------------------+----------------------------------+----------------------------------+
-| --ad_password                    | AD user password                 | Yes                              |
-+----------------------------------+----------------------------------+----------------------------------+
-| --ad_search_base                 | DN root to start search from     | Yes                              |
-+----------------------------------+----------------------------------+----------------------------------+
-| --output_file                    | Output HTML file                 | Yes                              |
-+----------------------------------+----------------------------------+----------------------------------+
-| --cluster_name                   | Name of cluster for the report   |                                  |
-+----------------------------------+----------------------------------+----------------------------------+
-| -h / --help                      | Print command help               |                                  |
-+----------------------------------+----------------------------------+----------------------------------+
+
+Switch                  | Description                       | Required
+======================================================================
+--ranger_url            | Ranger API URL                    | Yes
+--ranger_user           | Ranger API Username               | Yes
+--ranger_password       | Ranger API Password               | Yes
+--ad_controller         | Active Directory Server Hostname  | Yes
+--ad_user               | Read Only AD user - basic account | Yes
+--ad_password           | AD user password                  | Yes
+--ad_search_base        | DN root to start search from      | Yes
+--output_file           | Output HTML file                  | Yes
+--cluster_name          | Name of cluster for the report    | Yes
+-h / --help             | Print command help                | No
+
 
 Requirements
 ^^^^^^^^^^^^
@@ -66,8 +62,7 @@ Requirements
 Compatibility
 -------------
 
-These admin scripts are written in Python 2.7 to conform with the
-current release of Greenplum 5.5
+hadoop_ranger_audit is written and tested in Python 3.6.
 
 Licence
 -------
