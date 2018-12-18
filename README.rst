@@ -38,7 +38,7 @@ Change to the directory where you downloaded this package and run::
 
 Usage:
 ------
-hadoop_ranger_audit.py
+hadoop_ranger_audit.py::
 
  Switch                  | Description                       | Required
  ======================================================================
