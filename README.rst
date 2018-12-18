@@ -67,6 +67,8 @@ hadoop_ranger_audit is written and tested in Python 3.6.
 Licence
 -------
 
+Licensed under the MIT license.
+
 Authors
 -------
 
