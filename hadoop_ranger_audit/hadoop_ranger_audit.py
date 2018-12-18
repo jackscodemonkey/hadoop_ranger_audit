@@ -196,7 +196,7 @@ class ActiveDirectory:
             else:
                 return False
         except Exception as ex:
-            logger.warning('Could not find attribute {} for {}'.format(attribute,object))
+            logger.warning('Could not find attribute {} for {}'.format(attribute,object['cn']))
             return False
 
     def get_ad_group_drilldown(self, group_list, search_base):
@@ -274,7 +274,7 @@ def main(args):
     if args.debug:
         logger.setLevel(logging.DEBUG)
     else:
-        stream.setLevel(logging.INFO)
+        logger.setLevel(logging.INFO)
 
     formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
     stream.setFormatter(formatter)
@@ -376,6 +376,8 @@ def main(args):
                    )
     # endregion
 
+    logger.info("Report file written to: {}".format(args.output_file))
+
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument('--ranger_url', help='Base URL for ranger API.', required=True)
@@ -386,7 +388,7 @@ if __name__ == "__main__":
     parser.add_argument('--ad_password',help='', required=True)
     parser.add_argument('--output_file', help='Output file name.', required=True)
     parser.add_argument('--cluster_name', help='Cluster name for report output.', required=True)
-    parser.add_argument('--ad_search_base', help='LDAP path where searches will begin')
+    parser.add_argument('--ad_search_base', help='LDAP path where searches will begin', required=True)
     parser.add_argument('--debug', help='Enable debug messages.', action='store_true')
 
     args = parser.parse_args()
