@@ -1,3 +1,4 @@
 include README.rst
+include LICENSE.txt
 include hadoop_ranger_audit/report_template.html
 include docs/source/*
