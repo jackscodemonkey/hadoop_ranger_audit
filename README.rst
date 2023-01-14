@@ -1,3 +1,6 @@
+This codebase is no longer actively maintained, support and changes are no longer provided.
+===========================================================================================
+
 hadoop_ranger_audit
 ===================
 
